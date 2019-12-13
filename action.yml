@@ -1,13 +1,20 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'MSBuild and Deploy'
+description: 'Build and deploy'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  project:
+    description: 'The path to the csproj or sln file.'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we we greeted you'
+  password:
+    description: 'The profile password'
+    required: true
+  publish-profile:
+    description: 'The profile to use'
+    required: false
+    default: 'Default'
+  configuration:
+    description: 'Typically Release | Debug'
+    required: false
+    default: 'Release'
 runs:
   using: 'node12'
   main: 'index.js'

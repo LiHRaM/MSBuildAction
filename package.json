@@ -1,7 +1,7 @@
 {
-  "name": "hello-world-javascript-action",
+  "name": "msbuild-deploy-javascript-action",
   "version": "1.0.0",
-  "description": "This action prints \"Hello World\" or \"Hello\" + the name of a person to greet to the log.",
+  "description": "This action builds and deploys a .NET Framework project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
