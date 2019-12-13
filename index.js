@@ -10,7 +10,7 @@ try {
 
   var child = exec(`MSBuild.exe ${project} 
     -p:DeployOnBuild=True
-    -p:Password=${password}
+    -p:Password=${passwd}
     -p:PublishProfile="${profile}"
     -p:Configuration=${config}`,
     function (error, stdout, stderr) {
@@ -19,7 +19,7 @@ try {
         core.setFailed(error.message);
       }
     });
-  exec();
+  child();
 } catch (error) {
   core.setFailed(error.message);
 }
