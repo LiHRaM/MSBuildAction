@@ -12,7 +12,7 @@ try {
       project,
       '-p:DeployOnBuild=True',
       `-p:Configuration=${config}`,
-      `-p:PublishProfile="${profile}"`,
+      `-p:PublishProfile=${profile}`,
       `-p:Password=${password}`,
     ],
     { stdio: 'inherit' });
