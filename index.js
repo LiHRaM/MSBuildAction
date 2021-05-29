@@ -18,9 +18,7 @@ try {
     { stdio: 'inherit' });
   
   msbuild.on('close', (code) => {
-    if (code != 0) {
-      core.setFailed(`msbuild exited with code ${code}`);
-    }
+    process.exit(code);
   });
 
 } catch (error) {
