@@ -9,6 +9,7 @@ try {
   const config = core.getInput('configuration');
   
   const msbuild = spawn('msbuild.exe', [
+      project,
       '-p:DeployOnBuild=True',
       `-p:Configuration=${config}`,
       `-p:PublishProfile="${profile}"`,
@@ -16,8 +17,10 @@ try {
     ],
     { stdio: 'inherit' });
   
-  msbuild.on('error', (err) => {
-    throw err;
+  msbuild.on('close', (code) => {
+    if (code != 0) {
+      core.setFailed(`msbuild exited with code ${code}`);
+    }
   });
 
 } catch (error) {
