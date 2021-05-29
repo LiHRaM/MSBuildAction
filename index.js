@@ -8,15 +8,16 @@ try {
   const profile = core.getInput('publish-profile');
   const config = core.getInput('configuration');
   
-  const msbuild = spawn("MSBuild.exe", [
-    '-p:DeployOnBuild=True',
-    `-p:Configuration=${config}`,
-    `-p:PublishProfile="${profile}"`,
-    `-p:Password=${password}`
-  ]);
+  const msbuild = spawn('msbuild.exe', [
+      '-p:DeployOnBuild=True',
+      `-p:Configuration=${config}`,
+      `-p:PublishProfile="${profile}"`,
+      `-p:Password=${password}`,
+    ],
+    { stdio: 'inherit' });
   
-  msbuild.on('close', (code) => {
-    console.log(`child process exited with code ${code}`);
+  msbuild.on('error', (err) => {
+    throw err;
   });
 
 } catch (error) {
