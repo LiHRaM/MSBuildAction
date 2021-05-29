@@ -8,12 +8,8 @@ try {
   const profile = core.getInput('publish-profile');
   const config = core.getInput('configuration');
 
-  const cmd = `MSBuild.exe ${project} 
-  -p:DeployOnBuild=True
-  -p:Password=${passwd}
-  -p:PublishProfile="${profile}"
-  -p:Configuration=${config}`;
-
+  const cmd = `MSBuild.exe ${project} -p:Configuration=${config} -p:DeployOnBuild=True -p:PublishProfile="${profile}" -p:Password=${passwd}`;
+  
   var child = exec(cmd,
     function (error, stdout, stderr) {
       console.log(`stdout: ${stdout}\nstderr: ${stderr}\n`);
